@@ -19,7 +19,7 @@ const TokenList = () => {
   const [isFetching, setIsFetching] = useState(false);
   const [page, setPage] = useState(20);
 
-  const [isDesktop] = useMediaQuery("(min-width: 900px)");
+  const [isDesktop] = useMediaQuery("(min-width: 600px)");
 
   const fetchTokens = async () => {
     if (page <= 100) {
@@ -65,10 +65,10 @@ const TokenList = () => {
           p="4"
           my="4"
           boxShadow="base"
-          maxW={isDesktop ? "50%" : "80%"}
+          maxW={isDesktop ? "50%" : "90%"}
         >
           <TableContainer>
-            <Table>
+            <Table size={isDesktop ? "md" : "sm"}>
               <Thead>
                 <Tr>
                   <Th>#</Th>

@@ -17,7 +17,7 @@ const TokenRow = (props) => {
 
   const color = useColorModeValue("gray.100", "gray.700");
 
-  const [isDesktop] = useMediaQuery("(min-width: 900px)");
+  const [isDesktop] = useMediaQuery("(min-width: 600px)");
 
   return (
     <Tr
