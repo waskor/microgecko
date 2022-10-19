@@ -9,6 +9,7 @@ import {
   Th,
   Spinner,
   Flex,
+  useMediaQuery,
 } from "@chakra-ui/react";
 import TokenRow from "./TokenRow";
 import Navbar from "./Navbar";
@@ -17,6 +18,8 @@ const TokenList = () => {
   const [tokens, setTokens] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
   const [page, setPage] = useState(20);
+
+  const [isDesktop] = useMediaQuery("(min-width: 900px)");
 
   const fetchTokens = async () => {
     if (page <= 100) {
@@ -62,7 +65,7 @@ const TokenList = () => {
           p="4"
           my="4"
           boxShadow="base"
-          maxW="50%"
+          maxW={isDesktop ? "50%" : "80%"}
         >
           <TableContainer>
             <Table>
@@ -71,7 +74,7 @@ const TokenList = () => {
                   <Th>#</Th>
                   <Th>Name</Th>
                   <Th>Price</Th>
-                  <Th>Market Cap</Th>
+                  {isDesktop && <Th>Market Cap</Th>}
                 </Tr>
               </Thead>
               <Tbody>

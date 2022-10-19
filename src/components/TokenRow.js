@@ -8,6 +8,7 @@ import {
   Flex,
   Text,
   useColorModeValue,
+  useMediaQuery,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
@@ -15,6 +16,8 @@ const TokenRow = (props) => {
   const navigate = useNavigate();
 
   const color = useColorModeValue("gray.100", "gray.700");
+
+  const [isDesktop] = useMediaQuery("(min-width: 900px)");
 
   return (
     <Tr
@@ -46,7 +49,8 @@ const TokenRow = (props) => {
           ? props.tokenInfo.current_price.toFixed(6) // Shiba workaround lol
           : props.tokenInfo.current_price.toLocaleString()}
       </Td>
-      <Td>${props.tokenInfo.market_cap.toLocaleString()}</Td>
+
+      {isDesktop && <Td>${props.tokenInfo.market_cap.toLocaleString()}</Td>}
     </Tr>
   );
 };
